@@ -5,7 +5,7 @@ export function Sidebar() {
 		<aside className="bg-gray-800 w-full rounded-lg overflow-hidden max-h-[291px]">
 			<img
 				className="w-full object-cover h-[72px]"
-				src="https://images.unsplash.com/photo-1521185496955-15097b20c5fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
+				src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
 			/>
 
 			<div className="flex flex-col items-center mt-[-2rem]">
@@ -13,7 +13,7 @@ export function Sidebar() {
 					className="w-[4rem] h-[4rem] rounded-lg border-[4px] border-solid
           border-gray-800 outline outline-[2px] outline-green-300
           box-[initial]"
-					src="https://avatars.githubusercontent.com/u/53953937?v=4"
+					src="https://i.imgur.com/RDo1GCc.jpg"
 				/>
 				<strong className="mt-4 text-gray-100 leading-6">Izaías Lima</strong>
 				<span className="text-sm text-gray-400 leading-6">

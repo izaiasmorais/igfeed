@@ -1,3 +1,5 @@
+import { Comment } from "./Comment";
+
 export function Post() {
 	return (
 		<article
@@ -7,7 +9,7 @@ export function Post() {
 			<header className="flex items-center justify-between">
 				<div className="flex gap-4 items-center">
 					<img
-						src="https://github.com/izaiasmorais.png"
+						src="https://i.imgur.com/RDo1GCc.jpg"
 						alt="Izaías Lima"
 						className="w-[4rem] h-[4rem] rounded-lg border-[4px] border-solid
           border-gray-800 outline outline-[2px] outline-green-300
@@ -82,6 +84,12 @@ export function Post() {
 					</button>
 				</div>
 			</form>
+
+			<div className="mt-5">
+				<Comment />
+				<Comment />
+				<Comment />
+			</div>
 		</article>
 	);
 }
