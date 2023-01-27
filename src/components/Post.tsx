@@ -1,3 +1,4 @@
+import { Avatar } from "./Avatar";
 import { Comment } from "./Comment";
 
 export function Post() {
@@ -8,13 +9,7 @@ export function Post() {
 		>
 			<header className="flex items-center justify-between">
 				<div className="flex gap-4 items-center">
-					<img
-						src="https://i.imgur.com/RDo1GCc.jpg"
-						alt="Izaías Lima"
-						className="w-[4rem] h-[4rem] rounded-lg border-[4px] border-solid
-          border-gray-800 outline outline-[2px] outline-green-300
-          box-[initial]"
-					/>
+					<Avatar src="https://i.imgur.com/RDo1GCc.jpg" />
 					<div className="flex flex-col">
 						<strong className="text-gra-100 leading-[1.6]">Izaías Lima</strong>
 						<span className="text-[0.875rem] text-gray-400 leading-[1.6]">
@@ -64,7 +59,10 @@ export function Post() {
 				</div>
 			</div>
 
-			<form className="commentForm w-full mt-[1.5rem] pt-[1.5rem] border-t border-gray-600 ">
+			<form
+				className="commentForm w-full mt-[1.5rem] pt-[1.5rem] border-t
+			border-gray-600 transition-all"
+			>
 				<strong className="leading-relaxed  text-white">
 					Deixe seu feedback
 				</strong>
