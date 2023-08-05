@@ -1,7 +1,21 @@
+import { PostType } from "../@types/post";
 import { Avatar } from "./Avatar";
 import { Comment } from "./Comment";
+import { format, formatDistanceToNow } from "date-fns";
+import ptBR from "date-fns/locale/pt-BR";
 
-export function Post() {
+export function Post({ author, content, publishedAt }: Omit<PostType, "id">) {
+	const publishedDateFormat = format(
+		publishedAt,
+		"d 'de' LLLL 'às' HH:mm'h' ",
+		{ locale: ptBR }
+	);
+
+	const publishedDateRelative = formatDistanceToNow(publishedAt, {
+		locale: ptBR,
+		addSuffix: true,
+	});
+
 	return (
 		<article
 			className="bg-gray-800 p-[2.5rem] rounded-lg leading-[1.6]
@@ -9,54 +23,44 @@ export function Post() {
 		>
 			<header className="flex items-center justify-between">
 				<div className="flex gap-4 items-center">
-					<Avatar src="https://i.imgur.com/RDo1GCc.jpg" />
+					<Avatar src={author.avatarUrl} />
 					<div className="flex flex-col">
-						<strong className="text-gra-100 leading-[1.6]">Izaías Lima</strong>
+						<strong className="text-gra-100 leading-[1.6]">
+							{author.name}
+						</strong>
 						<span className="text-[0.875rem] text-gray-400 leading-[1.6]">
-							Full-stack developer
+							{author.role}
 						</span>
 					</div>
 				</div>
 
 				<time
-					title="03 de dezembro às 11:00"
-					dateTime="2022-12-03 11:00:00"
+					title={publishedDateFormat}
+					dateTime={publishedAt.toISOString()}
 					className="text-[0.875rem] text-gray-400"
 				>
-					Publicado há 1h
+					{publishedDateRelative}
 				</time>
 			</header>
 
 			<div>
-				<div>
-					<p className="mt-[1.6rem]">Fala galeraa 👋</p>
-
-					<p className="mt-[1.6rem]">
-						Acabei de subir mais um projeto no meu portifa. É um projeto que fiz
-						no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare
-						🚀
-					</p>
-
-					<p className="font-bold">
-						<a className="block mt-[1.6rem] text-green-300">
-							jane.design/doctorcare
-						</a>
-					</p>
-
-					<p className="flex gap-2 cursor-pointer mt-[1.6rem] font-bold">
-						<a className="block text-green-300 hover:text-green-500">
-							#novoprojeto
-						</a>
-
-						<a href="" className="block text-green-300 hover:text-green-500">
-							#nlw
-						</a>
-
-						<a href="" className="block text-green-300 hover:text-green-500">
-							#rocketseat
-						</a>
-					</p>
-				</div>
+				{content.map((line, index) => {
+					if (line.type === "paragraph") {
+						return (
+							<p key={index} className="mt-[1.6rem]">
+								{line.text}
+							</p>
+						);
+					} else if (line.type === "link") {
+						return (
+							<p key={index} className="font-bold">
+								<a className="block mt-[1.6rem] text-green-300" href="">
+									{line.text}
+								</a>
+							</p>
+						);
+					}
+				})}
 			</div>
 
 			<form

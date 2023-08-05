@@ -33,3 +33,9 @@ body::-webkit-scrollbar-thumb {
 	background-color: #00875f;
 	width: 3px;
 }
+
+@media (max-width: 768px) {
+	html {
+		font-size: 87.5%;
+	}
+}
